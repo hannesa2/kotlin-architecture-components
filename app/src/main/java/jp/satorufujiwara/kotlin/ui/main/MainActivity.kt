@@ -12,14 +12,16 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-  @Inject lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
 
-  override fun supportFragmentInjector() = androidInjector
+    override fun supportFragmentInjector() = androidInjector
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.main_activity)
-    setContentFragment(R.id.containerLayout) { MainFragment.newInstance() }
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+        setContentFragment(R.id.containerLayout) { MainFragment.newInstance() }
+    }
 }

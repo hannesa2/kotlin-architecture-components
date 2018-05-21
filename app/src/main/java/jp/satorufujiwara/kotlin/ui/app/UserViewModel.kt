@@ -7,5 +7,5 @@ import javax.inject.Singleton
 @Singleton
 class UserViewModel @Inject constructor() {
 
-  val loginUserId = MutableLiveData<String>()
+    val loginUserId = MutableLiveData<String>()
 }
