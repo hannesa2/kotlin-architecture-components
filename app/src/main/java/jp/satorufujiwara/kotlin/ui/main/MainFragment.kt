@@ -77,7 +77,7 @@ class MainFragment : Fragment(), Injectable {
     }
 
     inner class GitAdapter : RecyclerView.Adapter<GitAdapter.ViewHolder>() {
-        val items = ArrayList<Repo>()
+        val items = ArrayList<Animal>()
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitAdapter.ViewHolder {
             return ViewHolder(DataBindingUtil.inflate<RepoGitItemBinding>(

@@ -7,7 +7,6 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import jp.satorufujiwara.kotlin.data.model.Animal
-import jp.satorufujiwara.kotlin.data.model.Repo
 import jp.satorufujiwara.kotlin.data.repository.GitHubRepository
 import jp.satorufujiwara.kotlin.util.AbsentLiveData
 import jp.satorufujiwara.kotlin.util.ext.switchMap
@@ -17,7 +16,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val repository: GitHubRepository) : ViewModel() {
 
     val ownerId = MutableLiveData<String>()
-    val reposGit: LiveData<List<Repo>>
+    val reposGit: LiveData<List<Animal>>
     val reposAnimals: LiveData<List<Animal>>
 
     init {
@@ -27,6 +26,9 @@ class MainViewModel @Inject constructor(private val repository: GitHubRepository
                 repository.loadGitRepos(it)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
+                        .map {
+                            it.map { Animal(it.id, it.name) }.toList()
+                        }
                         .onErrorResumeNext(Flowable.empty())
                         .toLiveData()
         }

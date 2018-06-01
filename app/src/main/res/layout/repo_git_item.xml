@@ -7,7 +7,7 @@
 
         <variable
             name="repoGit"
-            type="jp.satorufujiwara.kotlin.data.model.Repo" />
+            type="jp.satorufujiwara.kotlin.data.model.Animal" />
     </data>
 
     <android.support.v7.widget.CardView
